@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Growth Engineer AI — Install an AI growth engine</title>
+<meta name="description" content="A done-for-you AI growth system that turns content, outreach, and follow-up into qualified sales calls." />
+<!-- NOTE (draft): all copy below is placeholder for the demo. Swap in real offer details anytime. -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@400;500;600&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: { ink: '#0A0A0B', surface: '#101012', line: '#1d1d20', accent: '#5EE6A8', accent2: '#36c98c' },
+      fontFamily: { display: ['"Space Grotesk"', 'sans-serif'], sans: ['Geist', 'system-ui', 'sans-serif'] },
+    }
+  }
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background: #0A0A0B; color: #F4F4F5; font-family: Geist, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  .font-display { font-family: "Space Grotesk", sans-serif; }
+  .reveal { opacity: 0; transform: translateY(24px); }
+  .accent-glow { box-shadow: 0 0 0 1px rgba(94,230,168,.25), 0 18px 60px -20px rgba(94,230,168,.35); }
+  .grain::before { content:''; position:fixed; inset:0; pointer-events:none; z-index:60; opacity:.04;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity:1; transform:none; } html{scroll-behavior:auto;} }
+</style>
+</head>
+<body class="grain antialiased selection:bg-accent/30">
+
+<!-- NAV -->
+<header class="fixed top-0 inset-x-0 z-50 border-b border-line/60 backdrop-blur-xl bg-ink/70">
+  <nav class="mx-auto max-w-7xl h-16 px-6 flex items-center justify-between">
+    <a href="#" class="flex items-center gap-2 font-display font-semibold tracking-tight">
+      <span class="grid place-items-center h-7 w-7 rounded-lg bg-accent text-ink font-bold">G</span>
+      Growth Engineer<span class="text-accent">AI</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm text-zinc-400">
+      <a href="#system" class="hover:text-white transition">The system</a>
+      <a href="#how" class="hover:text-white transition">How it works</a>
+      <a href="#proof" class="hover:text-white transition">Results</a>
+      <a href="#faq" class="hover:text-white transition">FAQ</a>
+    </div>
+    <a href="#offer" class="rounded-full bg-accent px-4 py-2 text-sm font-semibold text-ink hover:bg-accent2 transition active:scale-[0.98]">Get the system</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="relative min-h-[100dvh] overflow-hidden flex items-end">
+  <video id="hero-video" class="absolute inset-0 h-full w-full object-cover" autoplay muted loop playsinline poster="assets/hero-poster.webp">
+    <source src="assets/hero.mp4" type="video/mp4" />
+  </video>
+  <!-- masking gradient: video melts into the page bg -->
+  <div class="pointer-events-none absolute inset-0" style="background:
+    radial-gradient(130% 120% at 30% 30%, transparent 35%, #0A0A0B 100%),
+    linear-gradient(to top, #0A0A0B 6%, transparent 55%),
+    linear-gradient(to right, rgba(10,10,11,.85), transparent 60%);"></div>
+
+  <div class="relative z-10 mx-auto max-w-7xl w-full px-6 pb-24 pt-28">
+    <p class="reveal font-display text-xs uppercase tracking-[0.25em] text-accent mb-5">AI Growth Systems</p>
+    <h1 class="reveal font-display font-bold tracking-tighter leading-[1.03] text-5xl md:text-6xl max-w-2xl">
+      An AI growth engine that books your calendar.
+    </h1>
+    <p class="reveal mt-6 max-w-xl text-lg text-zinc-300 leading-relaxed">
+      A done-for-you system that turns content, outreach, and follow-up into qualified sales calls.
+    </p>
+    <div class="reveal mt-9 flex flex-wrap items-center gap-4">
+      <a href="#offer" class="rounded-full bg-accent px-7 py-3.5 font-semibold text-ink hover:bg-accent2 transition active:scale-[0.98] accent-glow">Get the system</a>
+      <a href="#how" class="rounded-full border border-line px-7 py-3.5 font-medium text-zinc-200 hover:border-zinc-500 transition">See how it works</a>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS STRIP (draft numbers) -->
+<section class="border-y border-line bg-surface/40">
+  <div class="mx-auto max-w-7xl grid grid-cols-2 md:grid-cols-4 divide-x divide-line">
+    <div class="reveal p-8"><div class="font-display text-4xl font-semibold text-white">3.4x</div><div class="mt-1 text-sm text-zinc-400">more booked calls</div></div>
+    <div class="reveal p-8"><div class="font-display text-4xl font-semibold text-white">11 days</div><div class="mt-1 text-sm text-zinc-400">to full deployment</div></div>
+    <div class="reveal p-8"><div class="font-display text-4xl font-semibold text-white">38 hrs</div><div class="mt-1 text-sm text-zinc-400">saved per month</div></div>
+    <div class="reveal p-8"><div class="font-display text-4xl font-semibold text-white">0</div><div class="mt-1 text-sm text-zinc-400">new hires needed</div></div>
+  </div>
+</section>
+
+<!-- PROBLEM (asymmetric split) -->
+<section class="mx-auto max-w-7xl px-6 py-28 grid lg:grid-cols-12 gap-12 items-center">
+  <div class="reveal lg:col-span-7">
+    <h2 class="font-display text-4xl md:text-5xl font-semibold tracking-tight leading-tight">Your growth shouldn't depend on you posting at midnight.</h2>
+    <p class="mt-6 text-zinc-400 leading-relaxed max-w-[60ch]">Most founders run lead generation by hand: writing content between calls, chasing replies, forgetting follow-ups. It works until you get busy. Then the pipeline goes quiet, and so does revenue.</p>
+  </div>
+  <div class="reveal lg:col-span-5 rounded-3xl border border-line bg-surface p-8 accent-glow">
+    <ul class="space-y-5 text-zinc-300">
+      <li class="flex gap-3"><span class="text-accent">—</span> Inconsistent content the moment work piles up</li>
+      <li class="flex gap-3"><span class="text-accent">—</span> Leads that slip through with no follow-up</li>
+      <li class="flex gap-3"><span class="text-accent">—</span> A calendar that empties when you stop hustling</li>
+      <li class="flex gap-3"><span class="text-accent">—</span> Hiring a team you can't afford to babysit</li>
+    </ul>
+  </div>
+</section>
+
+<!-- THE SYSTEM (bento) -->
+<section id="system" class="mx-auto max-w-7xl px-6 py-12">
+  <h2 class="reveal font-display text-4xl md:text-5xl font-semibold tracking-tight">One engine. Four moving parts.</h2>
+  <p class="reveal mt-4 text-zinc-400 max-w-[60ch]">We build, connect, and deploy the whole system into your business, then hand you the keys.</p>
+  <div class="mt-12 grid md:grid-cols-3 gap-5">
+    <div class="reveal md:col-span-2 rounded-3xl border border-line bg-gradient-to-br from-surface to-ink p-8 min-h-[260px] flex flex-col justify-between">
+      <span class="font-display text-accent text-sm">01 Content engine</span>
+      <div><h3 class="font-display text-2xl font-semibold">Daily content in your voice</h3><p class="mt-2 text-zinc-400 max-w-md">Trained on your offers and past wins, it drafts a week of posts in minutes. You approve, it ships.</p></div>
+    </div>
+    <div class="reveal rounded-3xl border border-line bg-surface p-8 min-h-[260px] flex flex-col justify-between">
+      <span class="font-display text-accent text-sm">02 Outreach</span>
+      <div><h3 class="font-display text-2xl font-semibold">Personalized at scale</h3><p class="mt-2 text-zinc-400">Researches each lead and writes a first line that sounds human.</p></div>
+    </div>
+    <div class="reveal rounded-3xl border border-line bg-surface p-8 min-h-[240px] flex flex-col justify-between">
+      <span class="font-display text-accent text-sm">03 Follow-up</span>
+      <div><h3 class="font-display text-2xl font-semibold">Nothing slips</h3><p class="mt-2 text-zinc-400">Every conversation nudged on schedule until they book or bow out.</p></div>
+    </div>
+    <div class="reveal md:col-span-2 rounded-3xl border border-line bg-gradient-to-tr from-surface to-ink p-8 min-h-[240px] flex flex-col justify-between">
+      <span class="font-display text-accent text-sm">04 Dashboard</span>
+      <div><h3 class="font-display text-2xl font-semibold">See the pipeline fill in real time</h3><p class="mt-2 text-zinc-400 max-w-md">Calls booked, replies, content shipped. One screen, no spreadsheets.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FLIPBOOK SHOWCASE (scroll-scrubbed) -->
+<section id="showcase" class="relative">
+  <div class="flip-pin relative h-[100dvh] flex items-center justify-center overflow-hidden">
+    <canvas id="flip" width="1280" height="720" class="max-h-[80vh] w-auto"></canvas>
+    <img id="flip-fallback" src="assets/hero-poster.webp" alt="" class="absolute max-h-[80vh] w-auto opacity-100" />
+    <div class="pointer-events-none absolute inset-0 flex items-center">
+      <div class="mx-auto max-w-7xl w-full px-6">
+        <div class="flip-copy max-w-sm">
+          <p class="font-display text-accent text-sm uppercase tracking-[0.2em]">Watch it assemble</p>
+          <h2 class="font-display text-3xl md:text-4xl font-semibold mt-3 leading-tight">Every part clicks into one growth engine.</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS (timeline, not 3 equal cards) -->
+<section id="how" class="mx-auto max-w-3xl px-6 py-28">
+  <h2 class="reveal font-display text-4xl md:text-5xl font-semibold tracking-tight">From kickoff to booked calls in under two weeks.</h2>
+  <ol class="mt-14 space-y-12 border-l border-line">
+    <li class="reveal relative pl-8"><span class="absolute -left-[9px] top-1 h-4 w-4 rounded-full bg-accent"></span><h3 class="font-display text-xl font-semibold">Week 1 — We map your offer</h3><p class="mt-2 text-zinc-400">One workshop call. We capture your voice, your offer, and your best customers, then train the system on them.</p></li>
+    <li class="reveal relative pl-8"><span class="absolute -left-[9px] top-1 h-4 w-4 rounded-full bg-zinc-600"></span><h3 class="font-display text-xl font-semibold">Week 2 — We build and connect</h3><p class="mt-2 text-zinc-400">Content, outreach, follow-up, and dashboard wired into your tools while you keep running your business.</p></li>
+    <li class="reveal relative pl-8"><span class="absolute -left-[9px] top-1 h-4 w-4 rounded-full bg-zinc-600"></span><h3 class="font-display text-xl font-semibold">Day 11 — You go live</h3><p class="mt-2 text-zinc-400">The engine runs. You approve content and take the calls it books. We stay on for 30 days of tuning.</p></li>
+  </ol>
+</section>
+
+<!-- PROOF -->
+<section id="proof" class="mx-auto max-w-7xl px-6 py-12">
+  <h2 class="reveal font-display text-4xl md:text-5xl font-semibold tracking-tight mb-12">Operators who stopped doing it by hand.</h2>
+  <div class="grid md:grid-cols-3 gap-5">
+    <figure class="reveal rounded-3xl border border-line bg-surface p-7"><blockquote class="text-zinc-200 leading-relaxed">"My calendar went from empty to seven calls in the first week. I haven't written a cold message since."</blockquote><figcaption class="mt-5 text-sm text-zinc-400">Marcus Vela · Founder, Northbound Consulting</figcaption></figure>
+    <figure class="reveal rounded-3xl border border-line bg-surface p-7"><blockquote class="text-zinc-200 leading-relaxed">"It posts in my voice better than I do. Clients think I hired a content team."</blockquote><figcaption class="mt-5 text-sm text-zinc-400">Priya Raman · Coach, The Quiet Close</figcaption></figure>
+    <figure class="reveal rounded-3xl border border-line bg-surface p-7"><blockquote class="text-zinc-200 leading-relaxed">"We cut two contractors and book more calls than before. It paid for itself in a month."</blockquote><figcaption class="mt-5 text-sm text-zinc-400">Devin Okafor · Agency owner, Lumen Studio</figcaption></figure>
+  </div>
+</section>
+
+<!-- OFFER -->
+<section id="offer" class="mx-auto max-w-7xl px-6 py-28">
+  <div class="reveal rounded-[2rem] border border-line bg-gradient-to-b from-surface to-ink p-10 md:p-14 accent-glow grid lg:grid-cols-2 gap-12">
+    <div>
+      <p class="font-display text-accent text-sm uppercase tracking-[0.2em]">The build</p>
+      <h2 class="font-display text-4xl md:text-5xl font-semibold tracking-tight mt-3 leading-tight">We install your growth engine. You take the calls.</h2>
+      <p class="mt-5 text-zinc-400 max-w-md">A done-for-you deployment plus 30 days of tuning. Limited builds per month so each one gets real attention.</p>
+      <ul class="mt-8 space-y-3 text-zinc-200">
+        <li class="flex gap-3"><span class="text-accent">+</span> Content, outreach, follow-up and dashboard, fully built</li>
+        <li class="flex gap-3"><span class="text-accent">+</span> Trained on your voice, offer, and best customers</li>
+        <li class="flex gap-3"><span class="text-accent">+</span> Connected to the tools you already use</li>
+        <li class="flex gap-3"><span class="text-accent">+</span> 30 days of hands-on optimization</li>
+      </ul>
+    </div>
+    <div class="flex flex-col justify-center rounded-3xl border border-line bg-ink/60 p-8">
+      <div class="text-zinc-400 text-sm">One-time build</div>
+      <div class="font-display text-5xl font-semibold mt-1">$4,800</div>
+      <div class="text-zinc-500 text-sm mt-1">or 2 payments of $2,500</div>
+      <a href="#" class="mt-7 rounded-full bg-accent px-7 py-4 text-center font-semibold text-ink hover:bg-accent2 transition active:scale-[0.98]">Claim your build slot</a>
+      <p class="mt-4 text-center text-xs text-zinc-500">Only 4 builds open this month.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="mx-auto max-w-3xl px-6 py-12">
+  <h2 class="reveal font-display text-4xl font-semibold tracking-tight mb-10">Questions, answered.</h2>
+  <div class="divide-y divide-line border-y border-line">
+    <details class="group py-5"><summary class="flex cursor-pointer items-center justify-between font-medium list-none">Do I need to be technical?<span class="text-accent transition group-open:rotate-45">+</span></summary><p class="mt-3 text-zinc-400">No. We build and connect everything. You approve content and take the calls.</p></details>
+    <details class="group py-5"><summary class="flex cursor-pointer items-center justify-between font-medium list-none">What tools does it plug into?<span class="text-accent transition group-open:rotate-45">+</span></summary><p class="mt-3 text-zinc-400">The stack you already run, including your CRM, calendar, and posting tools.</p></details>
+    <details class="group py-5"><summary class="flex cursor-pointer items-center justify-between font-medium list-none">How fast until it's live?<span class="text-accent transition group-open:rotate-45">+</span></summary><p class="mt-3 text-zinc-400">Most builds go live in 11 days, then we tune for 30 days.</p></details>
+    <details class="group py-5"><summary class="flex cursor-pointer items-center justify-between font-medium list-none">What if it doesn't fit my business?<span class="text-accent transition group-open:rotate-45">+</span></summary><p class="mt-3 text-zinc-400">We scope fit on the first call. If it's not right, you don't start.</p></details>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="mx-auto max-w-7xl px-6 pb-28">
+  <div class="reveal rounded-[2rem] border border-line bg-surface p-12 md:p-16 text-center accent-glow">
+    <h2 class="font-display text-4xl md:text-6xl font-semibold tracking-tighter">Stop running growth by hand.</h2>
+    <p class="mt-4 text-zinc-400 max-w-xl mx-auto">Get an engine that fills your calendar while you do the work only you can do.</p>
+    <a href="#offer" class="inline-block mt-8 rounded-full bg-accent px-8 py-4 font-semibold text-ink hover:bg-accent2 transition active:scale-[0.98]">Get the system</a>
+  </div>
+</section>
+
+<footer class="border-t border-line">
+  <div class="mx-auto max-w-7xl px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-zinc-500">
+    <div class="flex items-center gap-2 font-display font-semibold text-zinc-300"><span class="grid place-items-center h-6 w-6 rounded-md bg-accent text-ink text-xs font-bold">G</span> Growth Engineer AI</div>
+    <p>Built with Claude Code. Demo site.</p>
+  </div>
+</footer>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// Scroll reveals
+if (!reduce) {
+  gsap.utils.toArray('.reveal').forEach((el) => {
+    gsap.to(el, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 85%' } });
+  });
+} else { gsap.utils.toArray('.reveal').forEach(el => { el.style.opacity = 1; el.style.transform = 'none'; }); }
+
+// Hero video: reverse on end to kill the loop cut
+const hv = document.getElementById('hero-video');
+if (hv) { hv.removeAttribute('loop'); hv.addEventListener('ended', () => { try { hv.playbackRate *= -1; hv.play(); } catch(e){} }); }
+
+// Scroll-scrub flipbook (frames assets/frames/0001.webp ...). Falls back to poster if frames absent.
+(function () {
+  const TOTAL = 91; // actual extracted frame count
+  const canvas = document.getElementById('flip');
+  const ctx = canvas.getContext('2d');
+  const fallback = document.getElementById('flip-fallback');
+  const frames = [];
+  let loaded = 0, anyLoaded = false;
+  for (let i = 1; i <= TOTAL; i++) {
+    const im = new Image();
+    im.onload = () => { loaded++; anyLoaded = true; if (i === 1) draw(0); };
+    im.src = `assets/frames/${String(i).padStart(4, '0')}.jpg`;
+    frames.push(im);
+  }
+  function draw(idx) {
+    const im = frames[Math.max(0, Math.min(TOTAL - 1, Math.round(idx)))];
+    if (im && im.complete && im.naturalWidth) {
+      fallback.style.opacity = 0;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(im, 0, 0, canvas.width, canvas.height);
+    }
+  }
+  const obj = { f: 0 };
+  if (!reduce) {
+    gsap.to(obj, { f: TOTAL - 1, ease: 'none',
+      scrollTrigger: { trigger: '.flip-pin', start: 'top top', end: '+=200%', pin: true, scrub: true,
+        onUpdate: () => { if (anyLoaded) draw(obj.f); } } });
+    gsap.from('.flip-copy', { opacity: 0, y: 20, scrollTrigger: { trigger: '.flip-pin', start: 'top 60%' } });
+  }
+})();
+</script>
+</body>
+</html>
