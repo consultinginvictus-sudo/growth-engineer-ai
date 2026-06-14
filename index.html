@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Growth Engineer AI — Install an AI growth engine</title>
-<meta name="description" content="A done-for-you AI growth system that turns content, outreach, and follow-up into qualified sales calls." />
-<!-- NOTE (draft): all copy below is placeholder for the demo. Swap in real offer details anytime. -->
+<title>Growth Engineer AI — The AI OS for Overloaded Operators</title>
+<meta name="description" content="Stop trading your life for tasks a machine can do. Real AI workflows for busy operators. Systems. Tools. Real workflows." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
 tailwind.config = {
   theme: {
     extend: {
-      colors: { ink: '#0A0A0B', surface: '#101012', line: '#1d1d20', accent: '#5EE6A8', accent2: '#36c98c' },
-      fontFamily: { display: ['"Space Grotesk"', 'sans-serif'], sans: ['Geist', 'system-ui', 'sans-serif'] },
+      colors: { ink:'#0D0D0C', panel:'#15140F', panel2:'#1b1a13', gold:'#C9A84C', goldsoft:'#d8bd6e', teal:'#06C8A1', cream:'#F2ECE0', muted:'#9b968a' },
+      fontFamily: { serif:['"Playfair Display"','serif'], grotesk:['"Space Grotesk"','sans-serif'], sans:['Inter','system-ui','sans-serif'] },
+      borderRadius: { none:'0', DEFAULT:'0', sm:'0', md:'0', lg:'0', xl:'0', '2xl':'0', '3xl':'0', full:'9999px' },
     }
   }
 }
@@ -23,195 +23,213 @@ tailwind.config = {
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <style>
-  html { scroll-behavior: smooth; }
-  body { background: #0A0A0B; color: #F4F4F5; font-family: Geist, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
-  .font-display { font-family: "Space Grotesk", sans-serif; }
-  .reveal { opacity: 0; transform: translateY(24px); }
-  .accent-glow { box-shadow: 0 0 0 1px rgba(94,230,168,.25), 0 18px 60px -20px rgba(94,230,168,.35); }
-  .grain::before { content:''; position:fixed; inset:0; pointer-events:none; z-index:60; opacity:.04;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
-  @media (prefers-reduced-motion: reduce) { .reveal { opacity:1; transform:none; } html{scroll-behavior:auto;} }
+  html { scroll-behavior:smooth; }
+  body { background:#0D0D0C; color:#F2ECE0; font-family:Inter,system-ui,sans-serif; -webkit-font-smoothing:antialiased; }
+  .serif{font-family:"Playfair Display",serif;} .grotesk{font-family:"Space Grotesk",sans-serif;}
+  .em{font-style:italic; color:#C9A84C;}
+  .eyebrow{font-family:"Space Grotesk",sans-serif; text-transform:uppercase; letter-spacing:.28em; font-size:.72rem; color:#C9A84C;}
+  .hair{border-color:#2a2820;}
+  .reveal{opacity:0; transform:translateY(22px);}
+  .receipt{font-family:"Space Grotesk",monospace,monospace;}
+  .grain::after{content:''; position:fixed; inset:0; pointer-events:none; z-index:70; opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+  .hero-bg{ animation:drift 30s ease-in-out infinite alternate; transform-origin:62% 42%; will-change:transform; }
+  @keyframes drift{ from{transform:scale(1.06) translate3d(0,0,0);} to{transform:scale(1.15) translate3d(-1.5%,-1.5%,0);} }
+  @media (prefers-reduced-motion: reduce){ .reveal{opacity:1;transform:none;} .hero-bg{animation:none;} html{scroll-behavior:auto;} }
 </style>
 </head>
-<body class="grain antialiased selection:bg-accent/30">
+<body class="grain antialiased selection:bg-gold/30">
 
 <!-- NAV -->
-<header class="fixed top-0 inset-x-0 z-50 border-b border-line/60 backdrop-blur-xl bg-ink/70">
-  <nav class="mx-auto max-w-7xl h-16 px-6 flex items-center justify-between">
-    <a href="#" class="flex items-center gap-2 font-display font-semibold tracking-tight">
-      <span class="grid place-items-center h-7 w-7 rounded-lg bg-accent text-ink font-bold">G</span>
-      Growth Engineer<span class="text-accent">AI</span>
+<header class="fixed top-0 inset-x-0 z-50 border-b hair backdrop-blur-xl bg-ink/80">
+  <nav class="mx-auto max-w-6xl h-16 px-6 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-2.5 grotesk font-semibold tracking-tight text-cream">
+      <span class="grid place-items-center h-7 w-7 border border-teal text-teal text-sm font-bold">G</span>
+      Growth Engineer <span class="text-teal">AI</span>
     </a>
-    <div class="hidden md:flex items-center gap-8 text-sm text-zinc-400">
-      <a href="#system" class="hover:text-white transition">The system</a>
-      <a href="#how" class="hover:text-white transition">How it works</a>
-      <a href="#proof" class="hover:text-white transition">Results</a>
-      <a href="#faq" class="hover:text-white transition">FAQ</a>
+    <div class="hidden md:flex items-center gap-9 text-sm text-muted grotesk">
+      <a href="#start" class="hover:text-cream transition">Start here</a>
+      <a href="#workflow" class="hover:text-cream transition">What is a workflow</a>
+      <a href="#ladder" class="hover:text-cream transition">Products</a>
+      <a href="#dispatch" class="hover:text-cream transition">The Dispatch</a>
     </div>
-    <a href="#offer" class="rounded-full bg-accent px-4 py-2 text-sm font-semibold text-ink hover:bg-accent2 transition active:scale-[0.98]">Get the system</a>
+    <a href="#start" class="border border-gold px-4 py-2 text-sm font-medium text-gold hover:bg-gold hover:text-ink transition grotesk">DM GROWTH</a>
   </nav>
 </header>
 
 <!-- HERO -->
-<section class="relative min-h-[100dvh] overflow-hidden flex items-end">
-  <video id="hero-video" class="absolute inset-0 h-full w-full object-cover" autoplay muted loop playsinline poster="assets/hero-poster.webp">
-    <source src="assets/hero.mp4" type="video/mp4" />
-  </video>
-  <!-- masking gradient: video melts into the page bg -->
+<section id="top" class="relative min-h-[100dvh] flex items-center overflow-hidden">
+  <div class="hero-bg absolute inset-0 bg-cover bg-center opacity-70" style="background-image:url('assets/hero2-poster.webp');"></div>
   <div class="pointer-events-none absolute inset-0" style="background:
-    radial-gradient(130% 120% at 30% 30%, transparent 35%, #0A0A0B 100%),
-    linear-gradient(to top, #0A0A0B 6%, transparent 55%),
-    linear-gradient(to right, rgba(10,10,11,.85), transparent 60%);"></div>
+    radial-gradient(120% 120% at 70% 30%, transparent 30%, #0D0D0C 92%),
+    linear-gradient(to right, #0D0D0C 32%, rgba(13,13,12,.55) 70%, transparent),
+    linear-gradient(to top, #0D0D0C 4%, transparent 40%);"></div>
 
-  <div class="relative z-10 mx-auto max-w-7xl w-full px-6 pb-24 pt-28">
-    <p class="reveal font-display text-xs uppercase tracking-[0.25em] text-accent mb-5">AI Growth Systems</p>
-    <h1 class="reveal font-display font-bold tracking-tighter leading-[1.03] text-5xl md:text-6xl max-w-2xl">
-      An AI growth engine that books your calendar.
+  <div class="relative z-10 mx-auto max-w-6xl w-full px-6 pt-28 pb-20">
+    <p class="reveal eyebrow mb-6">Systems &middot; Tools &middot; Real workflows</p>
+    <h1 class="reveal serif font-semibold leading-[1.02] tracking-tight text-5xl md:text-7xl max-w-3xl">
+      The AI OS for <span class="em">Overloaded Operators.</span>
     </h1>
-    <p class="reveal mt-6 max-w-xl text-lg text-zinc-300 leading-relaxed">
-      A done-for-you system that turns content, outreach, and follow-up into qualified sales calls.
+    <p class="reveal mt-7 max-w-xl text-lg text-cream/75 leading-relaxed">
+      Stop trading your life for tasks a machine can do. Not prompts you guess at. Real workflows, decided once and run forever.
     </p>
     <div class="reveal mt-9 flex flex-wrap items-center gap-4">
-      <a href="#offer" class="rounded-full bg-accent px-7 py-3.5 font-semibold text-ink hover:bg-accent2 transition active:scale-[0.98] accent-glow">Get the system</a>
-      <a href="#how" class="rounded-full border border-line px-7 py-3.5 font-medium text-zinc-200 hover:border-zinc-500 transition">See how it works</a>
+      <a href="#start" class="bg-gold px-7 py-3.5 font-semibold text-ink hover:bg-goldsoft transition grotesk">Get the free Operator's AI Stack</a>
+      <a href="#workflow" class="border hair px-7 py-3.5 font-medium text-cream hover:border-gold transition grotesk">See what a workflow is</a>
     </div>
+    <p class="reveal mt-6 text-sm text-muted">Free. Five tools, the first workflow to build with each. Delivered when you DM <span class="text-gold font-medium">GROWTH</span>.</p>
   </div>
 </section>
 
-<!-- METRICS STRIP (draft numbers) -->
-<section class="border-y border-line bg-surface/40">
-  <div class="mx-auto max-w-7xl grid grid-cols-2 md:grid-cols-4 divide-x divide-line">
-    <div class="reveal p-8"><div class="font-display text-4xl font-semibold text-white">3.4x</div><div class="mt-1 text-sm text-zinc-400">more booked calls</div></div>
-    <div class="reveal p-8"><div class="font-display text-4xl font-semibold text-white">11 days</div><div class="mt-1 text-sm text-zinc-400">to full deployment</div></div>
-    <div class="reveal p-8"><div class="font-display text-4xl font-semibold text-white">38 hrs</div><div class="mt-1 text-sm text-zinc-400">saved per month</div></div>
-    <div class="reveal p-8"><div class="font-display text-4xl font-semibold text-white">0</div><div class="mt-1 text-sm text-zinc-400">new hires needed</div></div>
-  </div>
-</section>
+<!-- OUTCOME SELECTOR -->
+<section id="start" class="border-y hair bg-panel/40">
+  <div class="mx-auto max-w-6xl px-6 py-24">
+    <p class="reveal eyebrow">The hub</p>
+    <h2 class="reveal serif text-4xl md:text-5xl font-semibold tracking-tight mt-3">What are you trying to <span class="em">accomplish?</span></h2>
+    <p class="reveal mt-4 text-muted max-w-[58ch]">Pick one. We point you to the free workflow that starts it, and the product that finishes it. No browsing a directory.</p>
 
-<!-- PROBLEM (asymmetric split) -->
-<section class="mx-auto max-w-7xl px-6 py-28 grid lg:grid-cols-12 gap-12 items-center">
-  <div class="reveal lg:col-span-7">
-    <h2 class="font-display text-4xl md:text-5xl font-semibold tracking-tight leading-tight">Your growth shouldn't depend on you posting at midnight.</h2>
-    <p class="mt-6 text-zinc-400 leading-relaxed max-w-[60ch]">Most founders run lead generation by hand: writing content between calls, chasing replies, forgetting follow-ups. It works until you get busy. Then the pipeline goes quiet, and so does revenue.</p>
-  </div>
-  <div class="reveal lg:col-span-5 rounded-3xl border border-line bg-surface p-8 accent-glow">
-    <ul class="space-y-5 text-zinc-300">
-      <li class="flex gap-3"><span class="text-accent">—</span> Inconsistent content the moment work piles up</li>
-      <li class="flex gap-3"><span class="text-accent">—</span> Leads that slip through with no follow-up</li>
-      <li class="flex gap-3"><span class="text-accent">—</span> A calendar that empties when you stop hustling</li>
-      <li class="flex gap-3"><span class="text-accent">—</span> Hiring a team you can't afford to babysit</li>
-    </ul>
-  </div>
-</section>
-
-<!-- THE SYSTEM (bento) -->
-<section id="system" class="mx-auto max-w-7xl px-6 py-12">
-  <h2 class="reveal font-display text-4xl md:text-5xl font-semibold tracking-tight">One engine. Four moving parts.</h2>
-  <p class="reveal mt-4 text-zinc-400 max-w-[60ch]">We build, connect, and deploy the whole system into your business, then hand you the keys.</p>
-  <div class="mt-12 grid md:grid-cols-3 gap-5">
-    <div class="reveal md:col-span-2 rounded-3xl border border-line bg-gradient-to-br from-surface to-ink p-8 min-h-[260px] flex flex-col justify-between">
-      <span class="font-display text-accent text-sm">01 Content engine</span>
-      <div><h3 class="font-display text-2xl font-semibold">Daily content in your voice</h3><p class="mt-2 text-zinc-400 max-w-md">Trained on your offers and past wins, it drafts a week of posts in minutes. You approve, it ships.</p></div>
-    </div>
-    <div class="reveal rounded-3xl border border-line bg-surface p-8 min-h-[260px] flex flex-col justify-between">
-      <span class="font-display text-accent text-sm">02 Outreach</span>
-      <div><h3 class="font-display text-2xl font-semibold">Personalized at scale</h3><p class="mt-2 text-zinc-400">Researches each lead and writes a first line that sounds human.</p></div>
-    </div>
-    <div class="reveal rounded-3xl border border-line bg-surface p-8 min-h-[240px] flex flex-col justify-between">
-      <span class="font-display text-accent text-sm">03 Follow-up</span>
-      <div><h3 class="font-display text-2xl font-semibold">Nothing slips</h3><p class="mt-2 text-zinc-400">Every conversation nudged on schedule until they book or bow out.</p></div>
-    </div>
-    <div class="reveal md:col-span-2 rounded-3xl border border-line bg-gradient-to-tr from-surface to-ink p-8 min-h-[240px] flex flex-col justify-between">
-      <span class="font-display text-accent text-sm">04 Dashboard</span>
-      <div><h3 class="font-display text-2xl font-semibold">See the pipeline fill in real time</h3><p class="mt-2 text-zinc-400 max-w-md">Calls booked, replies, content shipped. One screen, no spreadsheets.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- FLIPBOOK SHOWCASE (scroll-scrubbed) -->
-<section id="showcase" class="relative">
-  <div class="flip-pin relative h-[100dvh] flex items-center justify-center overflow-hidden">
-    <canvas id="flip" width="1280" height="720" class="max-h-[80vh] w-auto"></canvas>
-    <img id="flip-fallback" src="assets/hero-poster.webp" alt="" class="absolute max-h-[80vh] w-auto opacity-100" />
-    <div class="pointer-events-none absolute inset-0 flex items-center">
-      <div class="mx-auto max-w-7xl w-full px-6">
-        <div class="flip-copy max-w-sm">
-          <p class="font-display text-accent text-sm uppercase tracking-[0.2em]">Watch it assemble</p>
-          <h2 class="font-display text-3xl md:text-4xl font-semibold mt-3 leading-tight">Every part clicks into one growth engine.</h2>
-        </div>
+    <div class="mt-12 grid lg:grid-cols-12 gap-5">
+      <div class="lg:col-span-5 flex flex-col gap-3" id="outcome-buttons">
+        <button data-k="content" class="oc group text-left border hair px-6 py-5 hover:border-gold transition flex items-center justify-between">
+          <span class="grotesk font-medium">Make content faster</span><span class="text-gold opacity-0 group-[.active]:opacity-100 transition">&rarr;</span>
+        </button>
+        <button data-k="face" class="oc group text-left border hair px-6 py-5 hover:border-gold transition flex items-center justify-between">
+          <span class="grotesk font-medium">Stop showing my face</span><span class="text-gold opacity-0 group-[.active]:opacity-100 transition">&rarr;</span>
+        </button>
+        <button data-k="output" class="oc group text-left border hair px-6 py-5 hover:border-gold transition flex items-center justify-between">
+          <span class="grotesk font-medium">Get usable output from AI</span><span class="text-gold opacity-0 group-[.active]:opacity-100 transition">&rarr;</span>
+        </button>
+        <button data-k="clone" class="oc group text-left border hair px-6 py-5 hover:border-gold transition flex items-center justify-between">
+          <span class="grotesk font-medium">Build a Claude that sounds like me</span><span class="text-gold opacity-0 group-[.active]:opacity-100 transition">&rarr;</span>
+        </button>
+      </div>
+      <div class="lg:col-span-7 border hair bg-ink p-8 md:p-10 min-h-[300px] flex flex-col justify-between" id="outcome-panel">
+        <!-- filled by JS -->
       </div>
     </div>
   </div>
 </section>
 
-<!-- HOW IT WORKS (timeline, not 3 equal cards) -->
-<section id="how" class="mx-auto max-w-3xl px-6 py-28">
-  <h2 class="reveal font-display text-4xl md:text-5xl font-semibold tracking-tight">From kickoff to booked calls in under two weeks.</h2>
-  <ol class="mt-14 space-y-12 border-l border-line">
-    <li class="reveal relative pl-8"><span class="absolute -left-[9px] top-1 h-4 w-4 rounded-full bg-accent"></span><h3 class="font-display text-xl font-semibold">Week 1 — We map your offer</h3><p class="mt-2 text-zinc-400">One workshop call. We capture your voice, your offer, and your best customers, then train the system on them.</p></li>
-    <li class="reveal relative pl-8"><span class="absolute -left-[9px] top-1 h-4 w-4 rounded-full bg-zinc-600"></span><h3 class="font-display text-xl font-semibold">Week 2 — We build and connect</h3><p class="mt-2 text-zinc-400">Content, outreach, follow-up, and dashboard wired into your tools while you keep running your business.</p></li>
-    <li class="reveal relative pl-8"><span class="absolute -left-[9px] top-1 h-4 w-4 rounded-full bg-zinc-600"></span><h3 class="font-display text-xl font-semibold">Day 11 — You go live</h3><p class="mt-2 text-zinc-400">The engine runs. You approve content and take the calls it books. We stay on for 30 days of tuning.</p></li>
-  </ol>
-</section>
-
-<!-- PROOF -->
-<section id="proof" class="mx-auto max-w-7xl px-6 py-12">
-  <h2 class="reveal font-display text-4xl md:text-5xl font-semibold tracking-tight mb-12">Operators who stopped doing it by hand.</h2>
-  <div class="grid md:grid-cols-3 gap-5">
-    <figure class="reveal rounded-3xl border border-line bg-surface p-7"><blockquote class="text-zinc-200 leading-relaxed">"My calendar went from empty to seven calls in the first week. I haven't written a cold message since."</blockquote><figcaption class="mt-5 text-sm text-zinc-400">Marcus Vela · Founder, Northbound Consulting</figcaption></figure>
-    <figure class="reveal rounded-3xl border border-line bg-surface p-7"><blockquote class="text-zinc-200 leading-relaxed">"It posts in my voice better than I do. Clients think I hired a content team."</blockquote><figcaption class="mt-5 text-sm text-zinc-400">Priya Raman · Coach, The Quiet Close</figcaption></figure>
-    <figure class="reveal rounded-3xl border border-line bg-surface p-7"><blockquote class="text-zinc-200 leading-relaxed">"We cut two contractors and book more calls than before. It paid for itself in a month."</blockquote><figcaption class="mt-5 text-sm text-zinc-400">Devin Okafor · Agency owner, Lumen Studio</figcaption></figure>
+<!-- WHAT IS A WORKFLOW + RECEIPT -->
+<section id="workflow" class="mx-auto max-w-6xl px-6 py-28 grid lg:grid-cols-12 gap-14 items-center">
+  <div class="reveal lg:col-span-6">
+    <p class="eyebrow">Read this first</p>
+    <h2 class="serif text-4xl md:text-5xl font-semibold tracking-tight mt-3 leading-[1.05]">A workflow is not a <span class="em">prompt.</span></h2>
+    <p class="mt-6 text-cream/80 leading-relaxed">Using AI is opening Claude, typing something, eyeballing the result, and figuring out the next step from scratch. Every time.</p>
+    <p class="mt-4 text-cream/80 leading-relaxed">A workflow is a repeatable pipeline. A specific input goes in one end. A finished output comes out the other. Same tools, same prompts, same order, same quality. The steps are already decided, so you stop thinking and start running.</p>
+    <p class="mt-6 text-muted">That repeatability is the product. Not "use AI for content." The exact pipeline. Here is one, printed in full.</p>
   </div>
-</section>
-
-<!-- OFFER -->
-<section id="offer" class="mx-auto max-w-7xl px-6 py-28">
-  <div class="reveal rounded-[2rem] border border-line bg-gradient-to-b from-surface to-ink p-10 md:p-14 accent-glow grid lg:grid-cols-2 gap-12">
-    <div>
-      <p class="font-display text-accent text-sm uppercase tracking-[0.2em]">The build</p>
-      <h2 class="font-display text-4xl md:text-5xl font-semibold tracking-tight mt-3 leading-tight">We install your growth engine. You take the calls.</h2>
-      <p class="mt-5 text-zinc-400 max-w-md">A done-for-you deployment plus 30 days of tuning. Limited builds per month so each one gets real attention.</p>
-      <ul class="mt-8 space-y-3 text-zinc-200">
-        <li class="flex gap-3"><span class="text-accent">+</span> Content, outreach, follow-up and dashboard, fully built</li>
-        <li class="flex gap-3"><span class="text-accent">+</span> Trained on your voice, offer, and best customers</li>
-        <li class="flex gap-3"><span class="text-accent">+</span> Connected to the tools you already use</li>
-        <li class="flex gap-3"><span class="text-accent">+</span> 30 days of hands-on optimization</li>
-      </ul>
-    </div>
-    <div class="flex flex-col justify-center rounded-3xl border border-line bg-ink/60 p-8">
-      <div class="text-zinc-400 text-sm">One-time build</div>
-      <div class="font-display text-5xl font-semibold mt-1">$4,800</div>
-      <div class="text-zinc-500 text-sm mt-1">or 2 payments of $2,500</div>
-      <a href="#" class="mt-7 rounded-full bg-accent px-7 py-4 text-center font-semibold text-ink hover:bg-accent2 transition active:scale-[0.98]">Claim your build slot</a>
-      <p class="mt-4 text-center text-xs text-zinc-500">Only 4 builds open this month.</p>
+  <!-- RECEIPT -->
+  <div class="reveal lg:col-span-6">
+    <div class="mx-auto max-w-sm bg-cream text-ink p-8 receipt text-[13px] leading-relaxed shadow-2xl shadow-black/60" style="clip-path: polygon(0 0,100% 0,100% 98%,96% 100%,92% 98%,88% 100%,84% 98%,80% 100%,76% 98%,72% 100%,68% 98%,64% 100%,60% 98%,56% 100%,52% 98%,48% 100%,44% 98%,40% 100%,36% 98%,32% 100%,28% 98%,24% 100%,20% 98%,16% 100%,12% 98%,8% 100%,4% 98%,0 100%);">
+      <div class="text-center border-b border-dashed border-ink/40 pb-3">
+        <div class="grotesk font-semibold tracking-[0.2em] text-sm">THE WEEKLY CONTENT WORKFLOW</div>
+        <div class="text-ink/60 mt-1">growthengineer.ai &middot; operator receipt</div>
+      </div>
+      <div class="py-3 border-b border-dashed border-ink/40">
+        <div class="flex justify-between"><span>INPUT</span><span class="font-semibold">a blank week</span></div>
+      </div>
+      <div class="py-3 space-y-1.5 border-b border-dashed border-ink/40">
+        <div class="flex justify-between"><span>01 Viral Radar &rarr; 10 hooks</span><span>Claude</span></div>
+        <div class="flex justify-between"><span>02 Pick top 3</span><span>you</span></div>
+        <div class="flex justify-between"><span>03 Hook &rarr; 6-block script</span><span>Claude</span></div>
+        <div class="flex justify-between"><span>04 Script &rarr; B-roll</span><span>Higgsfield</span></div>
+        <div class="flex justify-between"><span>05 Voiceover + captions</span><span>CapCut</span></div>
+        <div class="flex justify-between"><span>06 Caption + GROWTH CTA</span><span>Claude</span></div>
+        <div class="flex justify-between"><span>07 Schedule the week</span><span>Metricool</span></div>
+      </div>
+      <div class="pt-3 flex justify-between items-end">
+        <span class="grotesk">OUTPUT</span>
+        <span class="serif text-lg font-semibold">A week of content<br><span class="text-ink/60 text-xs grotesk font-normal">in one sitting</span></span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- FAQ -->
-<section id="faq" class="mx-auto max-w-3xl px-6 py-12">
-  <h2 class="reveal font-display text-4xl font-semibold tracking-tight mb-10">Questions, answered.</h2>
-  <div class="divide-y divide-line border-y border-line">
-    <details class="group py-5"><summary class="flex cursor-pointer items-center justify-between font-medium list-none">Do I need to be technical?<span class="text-accent transition group-open:rotate-45">+</span></summary><p class="mt-3 text-zinc-400">No. We build and connect everything. You approve content and take the calls.</p></details>
-    <details class="group py-5"><summary class="flex cursor-pointer items-center justify-between font-medium list-none">What tools does it plug into?<span class="text-accent transition group-open:rotate-45">+</span></summary><p class="mt-3 text-zinc-400">The stack you already run, including your CRM, calendar, and posting tools.</p></details>
-    <details class="group py-5"><summary class="flex cursor-pointer items-center justify-between font-medium list-none">How fast until it's live?<span class="text-accent transition group-open:rotate-45">+</span></summary><p class="mt-3 text-zinc-400">Most builds go live in 11 days, then we tune for 30 days.</p></details>
-    <details class="group py-5"><summary class="flex cursor-pointer items-center justify-between font-medium list-none">What if it doesn't fit my business?<span class="text-accent transition group-open:rotate-45">+</span></summary><p class="mt-3 text-zinc-400">We scope fit on the first call. If it's not right, you don't start.</p></details>
+<!-- VALUE LADDER -->
+<section id="ladder" class="border-y hair bg-panel/40">
+  <div class="mx-auto max-w-6xl px-6 py-24">
+    <p class="reveal eyebrow">The offer suite</p>
+    <h2 class="reveal serif text-4xl md:text-5xl font-semibold tracking-tight mt-3">Every product is a <span class="em">system,</span> not a file.</h2>
+    <p class="reveal mt-4 text-muted max-w-[60ch]">Each one solves a single named outcome and shows the mechanism. You are paying for the pipeline, not a PDF.</p>
+
+    <div class="mt-12 grid md:grid-cols-3 gap-px bg-[#2a2820] border hair">
+      <!-- free anchor -->
+      <div class="reveal md:col-span-1 bg-ink p-8 flex flex-col justify-between min-h-[260px]">
+        <div><span class="eyebrow text-teal">Free</span><h3 class="serif text-2xl font-semibold mt-3">The Operator's AI Stack</h3><p class="mt-2 text-muted text-sm">The 5 tools one operator runs, and the first workflow to build with each.</p></div>
+        <div class="text-gold grotesk font-semibold">$0 &middot; DM GROWTH</div>
+      </div>
+      <div class="reveal bg-ink p-8 flex flex-col justify-between min-h-[260px]">
+        <div><span class="eyebrow text-teal">Free</span><h3 class="serif text-2xl font-semibold mt-3">5 Claude Use Cases</h3><p class="mt-2 text-muted text-sm">Five real jobs, each with the copy-paste prompt and a screenshot of the output.</p></div>
+        <div class="text-gold grotesk font-semibold">$0 &middot; DM GROWTH</div>
+      </div>
+      <div class="reveal bg-ink p-8 flex flex-col justify-between min-h-[260px]">
+        <div><span class="eyebrow">Playbook</span><h3 class="serif text-2xl font-semibold mt-3">The Operator's Claude Playbook</h3><p class="mt-2 text-muted text-sm">50+ use cases in 6 workflow categories. Find your situation, copy the prompt, get the output.</p></div>
+        <div class="text-gold grotesk font-semibold text-lg">$47</div>
+      </div>
+      <!-- flagship -->
+      <div class="reveal md:col-span-2 bg-panel2 p-8 flex flex-col md:flex-row justify-between gap-6 min-h-[220px] border-l-2 border-gold">
+        <div class="max-w-md"><span class="eyebrow">Flagship</span><h3 class="serif text-3xl font-semibold mt-3">The Operator's Content Machine</h3><p class="mt-2 text-cream/70 text-sm">A week of content in one sitting. The documented Claude and Higgsfield pipeline, plus the batch calendar and scheduling setup.</p></div>
+        <div class="flex md:flex-col items-end justify-between"><div class="text-gold grotesk font-semibold text-3xl">$67</div><a href="#start" class="mt-3 bg-gold px-5 py-2.5 text-sm font-semibold text-ink hover:bg-goldsoft transition grotesk">Get it</a></div>
+      </div>
+      <div class="reveal bg-ink p-8 flex flex-col justify-between min-h-[220px]">
+        <div><span class="eyebrow">System</span><h3 class="serif text-2xl font-semibold mt-3">The Semi-Faceless Video System</h3><p class="mt-2 text-muted text-sm">Show up every day without showing your face. The full Higgsfield workflow.</p></div>
+        <div class="text-gold grotesk font-semibold text-lg">$67</div>
+      </div>
+      <div class="reveal bg-ink p-8 flex flex-col justify-between min-h-[200px]">
+        <div><span class="eyebrow">System</span><h3 class="serif text-2xl font-semibold mt-3">Build Your Own Claude</h3><p class="mt-2 text-muted text-sm">Train a custom Claude on your niche, voice, and offers. Step by step.</p></div>
+        <div class="text-gold grotesk font-semibold text-lg">$47</div>
+      </div>
+      <div class="reveal md:col-span-2 bg-ink p-8 flex flex-col md:flex-row justify-between gap-6 min-h-[200px]">
+        <div class="max-w-md"><span class="eyebrow text-teal">Recurring</span><h3 class="serif text-2xl font-semibold mt-3">The Operator's Dispatch</h3><p class="mt-2 text-muted text-sm">One workflow, three tools, one operator win. Every Monday. Five minutes to read. Issue 1 is free.</p></div>
+        <div class="flex md:flex-col items-end justify-between"><div class="text-gold grotesk font-semibold text-2xl">$7<span class="text-sm text-muted">/mo</span></div><a href="#dispatch" class="mt-3 border border-gold px-5 py-2.5 text-sm font-medium text-gold hover:bg-gold hover:text-ink transition grotesk">Read issue 1</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THESIS / OPERATOR -->
+<section class="mx-auto max-w-4xl px-6 py-28 text-center">
+  <p class="reveal eyebrow">The thesis</p>
+  <blockquote class="reveal serif text-3xl md:text-5xl font-medium leading-[1.15] tracking-tight mt-6">
+    Help people stop trading their <span class="em">lives</span> for tasks a machine can do.
+  </blockquote>
+  <p class="reveal mt-8 text-muted max-w-2xl mx-auto leading-relaxed">Built by an operator, not a guru. High-ticket closer turned systems operator, running multiple brands with no team. The stack came first to survive the volume. Now it is documented, so you can run it too. You are the mechanism, not the audience.</p>
+</section>
+
+<!-- DISPATCH / CAPTURE -->
+<section id="dispatch" class="border-t hair">
+  <div class="mx-auto max-w-6xl px-6 py-24 grid lg:grid-cols-2 gap-12 items-center">
+    <div class="reveal">
+      <p class="eyebrow">The Operator's Dispatch</p>
+      <h2 class="serif text-4xl md:text-5xl font-semibold tracking-tight mt-3 leading-[1.05]">One workflow in your inbox. <span class="em">Every Monday.</span></h2>
+      <p class="mt-5 text-muted max-w-md">The workflow of the week in numbered steps, the three tools it uses, and one real result from the field. Five minutes to read. Issue 1 is free.</p>
+    </div>
+    <div class="reveal border hair bg-panel p-8">
+      <form onsubmit="event.preventDefault(); this.querySelector('.done').classList.remove('hidden'); this.querySelector('input').value='';" class="space-y-3">
+        <label class="block text-sm text-muted grotesk">Get issue 1 free</label>
+        <input type="email" required placeholder="you@operator.com" class="w-full bg-ink border hair px-4 py-3.5 text-cream placeholder:text-muted/60 focus:border-gold outline-none" />
+        <button class="w-full bg-gold px-6 py-3.5 font-semibold text-ink hover:bg-goldsoft transition grotesk">Send me the Dispatch</button>
+        <p class="done hidden text-teal text-sm grotesk">Check your inbox. Issue 1 is on its way.</p>
+        <p class="text-xs text-muted">Or DM <span class="text-gold">GROWTH</span> on Instagram and the stack sends itself.</p>
+      </form>
+    </div>
   </div>
 </section>
 
 <!-- FINAL CTA -->
-<section class="mx-auto max-w-7xl px-6 pb-28">
-  <div class="reveal rounded-[2rem] border border-line bg-surface p-12 md:p-16 text-center accent-glow">
-    <h2 class="font-display text-4xl md:text-6xl font-semibold tracking-tighter">Stop running growth by hand.</h2>
-    <p class="mt-4 text-zinc-400 max-w-xl mx-auto">Get an engine that fills your calendar while you do the work only you can do.</p>
-    <a href="#offer" class="inline-block mt-8 rounded-full bg-accent px-8 py-4 font-semibold text-ink hover:bg-accent2 transition active:scale-[0.98]">Get the system</a>
+<section class="mx-auto max-w-6xl px-6 pb-28">
+  <div class="reveal border hair bg-panel2 p-12 md:p-20 text-center">
+    <h2 class="serif text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05]">Stop running growth <span class="em">by hand.</span></h2>
+    <p class="mt-5 text-muted max-w-xl mx-auto">Get the free Operator's AI Stack. Five tools, five starter workflows, one page. No fluff.</p>
+    <a href="#start" class="inline-block mt-9 bg-gold px-8 py-4 font-semibold text-ink hover:bg-goldsoft transition grotesk">DM GROWTH for the free stack</a>
   </div>
 </section>
 
-<footer class="border-t border-line">
-  <div class="mx-auto max-w-7xl px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-zinc-500">
-    <div class="flex items-center gap-2 font-display font-semibold text-zinc-300"><span class="grid place-items-center h-6 w-6 rounded-md bg-accent text-ink text-xs font-bold">G</span> Growth Engineer AI</div>
-    <p>Built with Claude Code. Demo site.</p>
+<footer class="border-t hair">
+  <div class="mx-auto max-w-6xl px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted grotesk">
+    <div class="flex items-center gap-2.5 text-cream"><span class="grid place-items-center h-6 w-6 border border-teal text-teal text-xs font-bold">G</span> Growth Engineer AI</div>
+    <p>@growthengineerai &middot; DM GROWTH &middot; growthengineer.ai</p>
   </div>
 </footer>
 
@@ -219,48 +237,48 @@ tailwind.config = {
 gsap.registerPlugin(ScrollTrigger);
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// Scroll reveals
-if (!reduce) {
-  gsap.utils.toArray('.reveal').forEach((el) => {
-    gsap.to(el, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
-      scrollTrigger: { trigger: el, start: 'top 85%' } });
-  });
-} else { gsap.utils.toArray('.reveal').forEach(el => { el.style.opacity = 1; el.style.transform = 'none'; }); }
+// reveals
+if(!reduce){ gsap.utils.toArray('.reveal').forEach(el=>{ gsap.to(el,{opacity:1,y:0,duration:.8,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%'}}); }); }
+else { gsap.utils.toArray('.reveal').forEach(el=>{el.style.opacity=1;el.style.transform='none';}); }
 
-// Hero video: reverse on end to kill the loop cut
-const hv = document.getElementById('hero-video');
-if (hv) { hv.removeAttribute('loop'); hv.addEventListener('ended', () => { try { hv.playbackRate *= -1; hv.play(); } catch(e){} }); }
+// hero video reverse-loop
+const hv=document.getElementById('hero-video');
+if(hv){ hv.removeAttribute('loop'); hv.addEventListener('ended',()=>{ try{hv.playbackRate*=-1; hv.play();}catch(e){} }); }
 
-// Scroll-scrub flipbook (frames assets/frames/0001.webp ...). Falls back to poster if frames absent.
-(function () {
-  const TOTAL = 91; // actual extracted frame count
-  const canvas = document.getElementById('flip');
-  const ctx = canvas.getContext('2d');
-  const fallback = document.getElementById('flip-fallback');
-  const frames = [];
-  let loaded = 0, anyLoaded = false;
-  for (let i = 1; i <= TOTAL; i++) {
-    const im = new Image();
-    im.onload = () => { loaded++; anyLoaded = true; if (i === 1) draw(0); };
-    im.src = `assets/frames/${String(i).padStart(4, '0')}.jpg`;
-    frames.push(im);
-  }
-  function draw(idx) {
-    const im = frames[Math.max(0, Math.min(TOTAL - 1, Math.round(idx)))];
-    if (im && im.complete && im.naturalWidth) {
-      fallback.style.opacity = 0;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.drawImage(im, 0, 0, canvas.width, canvas.height);
-    }
-  }
-  const obj = { f: 0 };
-  if (!reduce) {
-    gsap.to(obj, { f: TOTAL - 1, ease: 'none',
-      scrollTrigger: { trigger: '.flip-pin', start: 'top top', end: '+=200%', pin: true, scrub: true,
-        onUpdate: () => { if (anyLoaded) draw(obj.f); } } });
-    gsap.from('.flip-copy', { opacity: 0, y: 20, scrollTrigger: { trigger: '.flip-pin', start: 'top 60%' } });
-  }
-})();
+// outcome selector
+const OUTCOMES = {
+  content:{ free:"The Operator's AI Stack", paid:"The Operator's Content Machine", price:"$67",
+    line:"A week of content in one sitting. The documented Claude + Higgsfield pipeline." },
+  face:{ free:"A faceless sample reel", paid:"The Semi-Faceless Video System", price:"$67",
+    line:"Show up every day without showing your face. The full Higgsfield workflow." },
+  output:{ free:"5 Claude Use Cases", paid:"The Operator's Claude Playbook", price:"$47",
+    line:"50+ use cases in 6 categories. Find your job, copy the prompt, get the output." },
+  clone:{ free:"A setup starter", paid:"Build Your Own Claude", price:"$47",
+    line:"Train a custom Claude on your niche, voice, and offers. Step by step." },
+};
+const panel=document.getElementById('outcome-panel');
+const btns=[...document.querySelectorAll('.oc')];
+function render(k){
+  const o=OUTCOMES[k];
+  panel.innerHTML = `
+    <div>
+      <div class="eyebrow text-teal">Your path</div>
+      <div class="mt-5 flex items-center gap-3 text-sm grotesk text-muted">
+        <span class="border border-teal text-teal px-3 py-1">FREE</span>
+        <span>${o.free}</span>
+      </div>
+      <div class="my-4 h-px w-10 bg-gold"></div>
+      <h3 class="serif text-3xl font-semibold">${o.paid}</h3>
+      <p class="mt-3 text-cream/70 max-w-md">${o.line}</p>
+    </div>
+    <div class="mt-8 flex items-center justify-between border-t hair pt-6">
+      <div class="grotesk"><span class="text-muted text-sm">Closes the gap</span><div class="text-gold text-3xl font-semibold">${o.price}</div></div>
+      <a href="#start" class="bg-gold px-6 py-3 font-semibold text-ink hover:bg-goldsoft transition grotesk">DM GROWTH</a>
+    </div>`;
+  btns.forEach(b=>b.classList.toggle('active', b.dataset.k===k));
+}
+btns.forEach(b=>b.addEventListener('click',()=>render(b.dataset.k)));
+render('content');
 </script>
 </body>
 </html>
